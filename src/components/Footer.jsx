@@ -145,7 +145,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-gray-400">
           <p>
-            © {new Date().getFullYear()} Tileora. All rights reserved.
+            ©  Tileora. All rights reserved.
           </p>
 
           <p>
