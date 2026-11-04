@@ -1,2 +1,159 @@
-@import "tailwindcss";
 
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+:root {
+  --background: #faf9f6;
+  --foreground: #25251f;
+  --primary: #7b8060;
+  --secondary: #e8e5da;
+  --muted: #77776e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: #7b8060;
+  color: white;
+}
+
+.container-custom {
+  width: min(100% - 40px, 1280px);
+  margin-inline: auto;
+}
+
+.section-padding {
+  padding-block: 90px;
+}
+
+.section-label {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 4px;
+  background: #7b8060;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #5d6345;
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border: 1px solid #7b8060;
+  border-radius: 4px;
+  color: #5d6345;
+  transition: 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: #7b8060;
+  color: white;
+}
+
+.tile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.tile-image-wrapper {
+  overflow: hidden;
+}
+
+.tile-image-wrapper:hover .tile-image {
+  transform: scale(1.06);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .container-custom {
+    width: min(100% - 30px, 1280px);
+  }
+
+  .section-padding {
+    padding-block: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
