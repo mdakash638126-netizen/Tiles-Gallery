@@ -56,15 +56,15 @@ const Navbar = () => {
           {/* Right Side */}
           <div className="hidden md:flex items-center gap-5">
             <Link
-              href="/login"
-              className="text-sm font-semibold hover:text-[#7b8060]"
+              href="/signin"
+              className="text-sm primary-btn font-semibold hover:text-[#7b8060]"
             >
               Login
             </Link>
 
-            <Link href="/all-tiles" className="primary-btn !py-3 !px-5">
-              Explore Gallery
-              <ArrowUpRight size={16} />
+            <Link href="/signup" className="primary-btn !py-3 !px-5">
+              Registration
+              {/* <ArrowUpRight size={16} /> */}
             </Link>
           </div>
 
@@ -93,7 +93,7 @@ const Navbar = () => {
             ))}
 
             <Link
-              href="/login"
+              href="/singin"
               onClick={() => setMenuOpen(false)}
               className="block text-sm font-semibold"
             >
@@ -101,11 +101,11 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/all-tiles"
+              href="/signup"
               onClick={() => setMenuOpen(false)}
               className="primary-btn w-full"
             >
-              Explore Gallery
+              
               <ArrowUpRight size={16} />
             </Link>
           </div>
