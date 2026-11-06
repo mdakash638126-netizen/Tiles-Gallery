@@ -1,28 +1,19 @@
 
-import { connection } from "next/server";
-import AllTilesClient from "@/components/AllTilesClient";
+import { Suspense } from "react";
+import AllTilesServer from "@/components/AllTilesServer";
 
-const AllTiles = async () => {
-  // Wait for request time before fetching dynamic data
-  await connection();
-
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/data.json`,
-    {
-      cache: "no-store",
-    }
+const AllTilesPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <p className="text-lg font-medium">Loading tiles...</p>
+        </div>
+      }
+    >
+      <AllTilesServer />
+    </Suspense>
   );
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch tiles");
-  }
-
-  const data = await response.json();
-
-  // Get tiles from JSON data
-  const tiles = data.tiles || [];
-
-  return <AllTilesClient tiles={tiles} />;
 };
 
-export default AllTiles;
+export default AllTilesPage;

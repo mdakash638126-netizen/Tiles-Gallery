@@ -1,8 +1,9 @@
 
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
-const Page = async ({ params }) => {
+const TileDetails = async ({ params }) => {
   const { id } = await params;
 
   const response = await fetch(
@@ -21,7 +22,9 @@ const Page = async ({ params }) => {
   // Supports both array and { tiles: [...] } formats
   const tiles = Array.isArray(data) ? data : data.tiles || [];
 
-  const tile = tiles.find((t) => String(t.id) === String(id));
+  const tile = tiles.find(
+    (t) => String(t.id) === String(id)
+  );
 
   if (!tile) {
     notFound();
@@ -84,6 +87,20 @@ const Page = async ({ params }) => {
 
       </div>
     </div>
+  );
+};
+
+const Page = ({ params }) => {
+  return (
+    <Suspense
+      fallback={
+        <div className="container-custom section-padding">
+          <p>Loading tile details...</p>
+        </div>
+      }
+    >
+      <TileDetails params={params} />
+    </Suspense>
   );
 };
 
